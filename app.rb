@@ -1,16 +1,17 @@
-require 'sinatra'
-require 'sinatra/reloader'
+require "sinatra"
+require "sinatra/reloader"
+require "slim"
 
 configure :development, :test do
-  require 'pry'
+  require "pry"
 end
 
-Dir[File.join(File.dirname(__FILE__), 'lib', '**', '*.rb')].each do |file|
+Dir[File.join(File.dirname(__FILE__), "lib", "**", "*.rb")].each do |file|
   require file
   also_reload file
 end
 
-get '/' do
+get "/" do
   @title = "Hello World"
-  erb :index
+  slim :index
 end
