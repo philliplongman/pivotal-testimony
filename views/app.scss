@@ -1,8 +1,9 @@
 @import "foundation.min.css";
 
 pre {
+  color: #0b153b;
   background: #dce3e9;
-  border: 1px solid #848a9c;
+  border: 1px solid #9aa0b1;
   margin-top: 5px;
   padding: 8px;
 }
@@ -18,16 +19,27 @@ pre {
 }
 
 .story-form {
-  margin-bottom: 20px;
   margin-top: 20px;
 
   input {
     display: inline-block;
     vertical-align: baseline;
-    width: auto !important;
+  }
+
+  input[type="text"] {
+    width: 70%;
   }
 
   .button {
     height: 39px;
+    width: 30%;
+  }
+}
+
+.story {
+    margin-top: 15px;
+
+  label {
+    margin-top: 5px;
   }
 }

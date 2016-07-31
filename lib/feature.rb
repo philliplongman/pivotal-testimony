@@ -11,6 +11,7 @@ class Feature
   def export
     export = []
     export << LineWrapper.wrap_scenario(scenario)
+    export << "Acceptance Criteria:"
     tasks.each { |task| export << LineWrapper.wrap_task(task) }
     export * "\n"
   end

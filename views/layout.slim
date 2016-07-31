@@ -8,15 +8,19 @@ html[lang="en"]
     
   body
     .row
-      .small-12.columns
-        label Project Name
-        h4 = @title
-        
-        form.story-form[action="/" method="post"]
+      form.story-form[action="/" method="post"]
+        .small-6.columns
+          label[for="project_id"] Project Name
+          select#project_id[name="project_id"]
+            - @projects.each do |project|
+              option[value=project.id] = project.name
+          
+        .small-6.columns
           label[for="story_id"] Story ID
-          input[type="text" id="story_id" name="story[id]" style="display: inline-block"]
+          input#story_id[type="text" name="story_id"]
           input.button[type="submit" value="Testify!"]
 
+      .story.small-12.columns
         == yield
 
     script[src="/javascripts/app.js"]

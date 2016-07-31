@@ -9,8 +9,8 @@ class PivotalExporter < Sinatra::Base
     @@client ||= TrackerApi::Client.new(token: ENV['API_TOKEN'])
   end
 
-  def project
-    @@project ||= client.project(ENV['PROJECT'])
+  def projects
+    @@projects ||= client.projects
   end
 
   get "/stylesheets/app.css" do
@@ -18,22 +18,25 @@ class PivotalExporter < Sinatra::Base
   end
 
   get "/" do
-    @title = project.name
+    @projects = projects
     slim :index
   end
 
   post "/" do
-    if params[:story][:id].empty?
+    if params[:story_id].empty?
       redirect "/"
     else
-      id = params[:story][:id].sub('#', '')
-      redirect "/stories/#{id}"
+      project_id = params[:project_id]
+      story_id = params[:story_id].sub('#', '')
+      redirect "/projects/#{project_id}/stories/#{story_id}"
     end
   end
 
-  get "/stories/:id" do
-    @title = project.name
-    @feature = Feature.new project.story(params[:id])
+  get "/projects/:project_id/stories/:story_id" do
+    story = client.project(params[:project_id]).story(params[:story_id])
+    
+    @projects = projects
+    @feature = Feature.new(story)
     slim :show
   end
 end
