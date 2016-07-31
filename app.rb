@@ -6,6 +6,9 @@ require "sinatra/reloader"
 require "slim"
 require "tracker_api"
 
+require_relative "lib/feature"
+require_relative "lib/line_wrapper"
+
 configure :development, :test do
   require "pry"
 end
@@ -19,6 +22,12 @@ client = TrackerApi::Client.new(token: ENV['API_TOKEN'])
 project = client.project(ENV['PROJECT'])
 
 get "/" do
-  @title = project.nmae
+  @title = project.name
   slim :index
+end
+
+get "/stories/:id" do
+  @title = project.name
+  @feature = Feature.new project.story(params[:id])
+  slim :show
 end

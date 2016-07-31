@@ -1,11 +1,14 @@
 doctype html
 html[lang="en"]
   head
+    title Pivotal Exporter
     meta[charset="utf-8"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    title Hello World
     link[rel="stylesheet" href="/stylesheets/app.css"]
+    
   body
+    h1 = @title
+
     == yield
 
     script[src="/javascripts/app.js"]
