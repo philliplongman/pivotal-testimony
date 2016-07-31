@@ -10,11 +10,10 @@ html[lang="en"]
     h1 = @title
     
     form[action="/" method="post"]
-      label[for="id"] Story ID
-      input[type="text" id="story_id" name="story_id"]
+      label[for="story_id"] Story ID
+      input[type="text" id="story_id" name="story[id]"]
       input[type="submit" value="Submit"]
 
     == yield
 
     script[src="/javascripts/app.js"]
-    

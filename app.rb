@@ -1,38 +1,35 @@
-require "dotenv"
-Dotenv.load
-
-require "sinatra"
+require "sinatra/base"
 require "sinatra/reloader"
-require "slim"
-require "tracker_api"
 
-require_relative "lib/feature"
-require_relative "lib/line_wrapper"
 
-configure :development, :test do
-  require "pry"
-end
+class PivotalExporter < Sinatra::Base
+  register Sinatra::Reloader if development?
 
-Dir[File.join(File.dirname(__FILE__), "lib", "**", "*.rb")].each do |file|
-  require file
-  also_reload file
-end
+  def client
+    @@client ||= TrackerApi::Client.new(token: ENV['API_TOKEN'])
+  end
 
-client = TrackerApi::Client.new(token: ENV['API_TOKEN'])
-project = client.project(ENV['PROJECT'])
+  def project
+    @@project ||= client.project(ENV['PROJECT'])
+  end
 
-get "/" do
-  @title = project.name
-  slim :index
-end
+  get "/" do
+    @title = project.name
+    slim :index
+  end
 
-post "/" do
-  id = params[:story_id].sub('#', '')
-  redirect "/stories/#{id}"
-end
+  post "/" do
+    if params[:story][:id].empty?
+      redirect "/"
+    else
+      id = params[:story][:id].sub('#', '')
+      redirect "/stories/#{id}"
+    end
+  end
 
-get "/stories/:id" do
-  @title = project.name
-  @feature = Feature.new project.story(params[:id])
-  slim :show
+  get "/stories/:id" do
+    @title = project.name
+    @feature = Feature.new project.story(params[:id])
+    slim :show
+  end
 end

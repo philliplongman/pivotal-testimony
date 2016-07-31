@@ -1,13 +1,13 @@
-source "https://rubygems.org"
+source :rubygems
 
 gem "sinatra"
 gem "sinatra-contrib"
 gem "rake"
 gem "slim"
-gem "dotenv"
 gem "tracker_api"
 
 group :test, :development do
+  gem "dotenv"
   gem "pry"
   gem "capybara"
   gem "rspec"

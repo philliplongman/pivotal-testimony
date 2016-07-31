@@ -1,6 +1,5 @@
 class Feature
-
-  attr_reader :name, :labels
+  attr_reader :name, :labels, :description, :tasks
 
   def initialize(story)
     @name = story.name
@@ -12,15 +11,11 @@ class Feature
   def export
     export = []
     export << LineWrapper.wrap_scenario(scenario)
-    tasks.each do |task|
-      export << LineWrapper.wrap_task(task)
-    end
+    tasks.each { |task| export << LineWrapper.wrap_task(task) }
     export * "\n"
   end
 
   private
-
-  attr_reader :description, :tasks
 
   def scenario
     @scenario ||= description.split(notes_section_header).first.strip
