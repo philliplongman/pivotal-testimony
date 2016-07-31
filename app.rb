@@ -26,6 +26,11 @@ get "/" do
   slim :index
 end
 
+post "/" do
+  id = params[:story_id].sub('#', '')
+  redirect "/stories/#{id}"
+end
+
 get "/stories/:id" do
   @title = project.name
   @feature = Feature.new project.story(params[:id])

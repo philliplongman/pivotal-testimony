@@ -8,7 +8,13 @@ html[lang="en"]
     
   body
     h1 = @title
+    
+    form[action="/" method="post"]
+      label[for="id"] Story ID
+      input[type="text" id="story_id" name="story_id"]
+      input[type="submit" value="Submit"]
 
     == yield
 
     script[src="/javascripts/app.js"]
+    
