@@ -1,4 +1,0 @@
-- Something up top.
-- Error handling for incorrect story IDs.
-- "Log in" with your API token which gets stored in a cookie, so anyone can use the app.
-- Store last selected project in cookie.
