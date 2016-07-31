@@ -7,13 +7,18 @@ html[lang="en"]
     link[rel="stylesheet" href="/stylesheets/app.css"]
     
   body
-    h1 = @title
-    
-    form[action="/" method="post"]
-      label[for="story_id"] Story ID
-      input[type="text" id="story_id" name="story[id]"]
-      input[type="submit" value="Submit"]
+    .row.collapse
+      .small-12.columns
+        h3 = @title
+        
+      form.story-form[action="/" method="post"]
+        .text.small-3.columns
+          label[for="story_id"] Story ID
+          input[type="text" id="story_id" name="story[id]"]
+        .submit.small-1.columns.end
+          input.button[type="submit" value="Submit"]
 
-    == yield
+      .small-12.columns
+        == yield
 
     script[src="/javascripts/app.js"]

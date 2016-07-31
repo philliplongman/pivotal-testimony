@@ -1,7 +1,7 @@
-h2 = @feature.name
+h4 = @feature.name
 p 
   - @feature.labels.each do |label|
-    span = label
+    span.label = label
 
 pre
   = @feature.export

@@ -13,6 +13,10 @@ class PivotalExporter < Sinatra::Base
     @@project ||= client.project(ENV['PROJECT'])
   end
 
+  get "/stylesheets/app.css" do
+    scss :app
+  end
+
   get "/" do
     @title = project.name
     slim :index
