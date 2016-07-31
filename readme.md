@@ -14,7 +14,7 @@ feature "Phillip cuts down on his workload -" do
   # Acceptance Criteria:
   # [ ] When I visit the Heroku app, I should be able to enter a story ID into
   #     the form (with or without the "#").
-  # [ ] When I press "Export," it should load the story with Pivotal Tracker's
+  # [ ] When I press "Testify!" it should load the story with Pivotal Tracker's
   #     API using the tracker_api gem.
   # [ ] The story should be output as a preformatted text block, like this one.
   # [ ] The description should be on top, excluding everything under "NOTES:".
