@@ -1,9 +1,16 @@
 require "sinatra/base"
 require "sinatra/reloader"
+require "action_view"
 
 
 class PivotalExporter < Sinatra::Base
   register Sinatra::Reloader if development?
+
+  helpers do
+    include ActionView::Helpers::UrlHelper
+    include ActionView::Helpers::FormTagHelper
+    include ActionView::Helpers::FormOptionsHelper
+  end
 
   def client
     @@client ||= TrackerApi::Client.new(token: ENV['API_TOKEN'])
@@ -34,7 +41,7 @@ class PivotalExporter < Sinatra::Base
 
   get "/projects/:project_id/stories/:story_id" do
     story = client.project(params[:project_id]).story(params[:story_id])
-    
+
     @projects = projects
     @feature = Feature.new(story)
     slim :show

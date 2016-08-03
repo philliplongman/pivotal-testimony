@@ -10,6 +10,7 @@ gem "slim"
 gem "tracker_api"
 gem "sass"
 gem "foundation-rails"
+gem "actionview"
 
 group :test, :development do
   gem "dotenv"

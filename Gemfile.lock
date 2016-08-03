@@ -170,6 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionview
   capybara
   dotenv
   foundation-rails
