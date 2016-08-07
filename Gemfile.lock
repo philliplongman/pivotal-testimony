@@ -19,6 +19,12 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     backports (3.6.8)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     capybara (2.7.1)
       addressable
@@ -34,6 +40,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.0)
+    debug_inspector (0.0.2)
     declarative (0.0.8)
       uber (>= 0.0.15)
     descendants_tracker (0.0.4)
@@ -168,6 +175,8 @@ PLATFORMS
 
 DEPENDENCIES
   actionview
+  better_errors
+  binding_of_caller
   bundler
   capybara
   dotenv
