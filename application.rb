@@ -5,10 +5,13 @@ class PivotalExporter < Sinatra::Base
     register Sinatra::AssetPipeline
 
     if defined?(RailsAssets)
-      RailsAssets.load_paths.each { |path| settings.sprockets.append_path(path) }
+      RailsAssets.load_paths.each do |path|
+        settings.sprockets.append_path(path)
+      end
     end
   end
 
+  helpers Sinatra::Cookies
   helpers do
     include ActionView::Helpers::UrlHelper
     include ActionView::Helpers::FormTagHelper
