@@ -2,15 +2,16 @@ source "https://rubygems.org"
 
 ruby "2.3.1"
 
-gem "sinatra"
-gem "sinatra-contrib"
-gem "puma"
+gem "bundler"
+gem "sinatra", require: ["sinatra", "sinatra/base"]
+gem "sinatra-contrib", require: "sinatra/reloader"
+gem "sinatra-asset-pipeline", require: "sinatra/asset_pipeline"
+gem "actionview", require: "action_view"
 gem "rake"
+gem "puma"
 gem "slim"
+gem "uglifier"
 gem "tracker_api"
-gem "sass"
-gem "foundation-rails"
-gem "actionview"
 
 group :test, :development do
   gem "dotenv"

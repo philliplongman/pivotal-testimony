@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] ||= 'development'
 
-require 'bundler'
+require 'bundler/setup'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
 Dotenv.load if development?
@@ -8,6 +8,6 @@ Dotenv.load if development?
 require_relative "lib/feature"
 require_relative "lib/line_wrapper"
 
-require './app'
+require './application'
 
 run PivotalExporter

@@ -4,7 +4,7 @@ html[lang="en"]
     title Pivotal Testimony
     meta[charset="utf-8"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    link[rel="stylesheet" href="/stylesheets/app.css"]
+    == stylesheet_tag 'application'
     
   body
     .top-bar.stacked-for-small
@@ -27,8 +27,8 @@ html[lang="en"]
           == label_tag :story_id, "Story ID"
           == text_field_tag :story_id
           == submit_tag "Testify!", class: "button"
-
+    
       .story.small-12.columns
         == yield
 
-    script[src="/javascripts/app.js"]
+    == javascript_tag 'application'
