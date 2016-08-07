@@ -4,23 +4,31 @@ html[lang="en"]
     title Pivotal Testimony
     meta[charset="utf-8"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    link[rel="stylesheet" href="/stylesheets/app.css"]
+    == stylesheet_tag 'application'
     
   body
+    .top-bar.stacked-for-small
+      .top-bar-title
+        strong
+          == link_to "Pivotal Testimony", "/"
+      
+      div
+        .top-bar-right
+          ul.menu
+            li== text_field_tag :api_token, @api_token, placeholder: "Pivotal Tracker API"
+            li== button_tag "Set API", class: "button"
+      
     .row
       form.story-form[action="/" method="post"]
         .medium-6.columns
-          label[for="project_id"] Project Name
-          select#project_id[name="project_id"]
-            - @projects.each do |project|
-              option[value=project.id] = project.name
-          
+          == label_tag :project_id, "Project"
+          == select_tag :project_id, options_from_collection_for_select(@projects, :id, :name)
         .medium-6.columns
-          label[for="story_id"] Story ID
-          input#story_id[type="text" name="story_id"]
-          input.button[type="submit" value="Testify!"]
-
+          == label_tag :story_id, "Story ID"
+          == text_field_tag :story_id
+          == submit_tag "Testify!", class: "button"
+    
       .story.small-12.columns
         == yield
 
-    script[src="/javascripts/app.js"]
+    == javascript_tag 'application'

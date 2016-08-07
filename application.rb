@@ -1,20 +1,26 @@
-require "sinatra/base"
-require "sinatra/reloader"
-
-
 class PivotalExporter < Sinatra::Base
   register Sinatra::Reloader if development?
 
+  configure do
+    register Sinatra::AssetPipeline
+
+    if defined?(RailsAssets)
+      RailsAssets.load_paths.each { |path| settings.sprockets.append_path(path) }
+    end
+  end
+
+  helpers do
+    include ActionView::Helpers::UrlHelper
+    include ActionView::Helpers::FormTagHelper
+    include ActionView::Helpers::FormOptionsHelper
+  end
+
   def client
-    @@client ||= TrackerApi::Client.new(token: ENV['API_TOKEN'])
+    @@client ||= TrackerApi::Client.new(token: ENV["API_TOKEN"])
   end
 
   def projects
     @@projects ||= client.projects
-  end
-
-  get "/stylesheets/app.css" do
-    scss :app
   end
 
   get "/" do
@@ -34,7 +40,7 @@ class PivotalExporter < Sinatra::Base
 
   get "/projects/:project_id/stories/:story_id" do
     story = client.project(params[:project_id]).story(params[:story_id])
-    
+
     @projects = projects
     @feature = Feature.new(story)
     slim :show
