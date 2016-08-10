@@ -4,7 +4,7 @@ ruby "2.3.1"
 
 gem "bundler"
 gem "sinatra", require: ["sinatra", "sinatra/base"]
-gem "sinatra-contrib", require: ["sinatra/reloader"]
+gem "sinatra-contrib", require: "sinatra/reloader"
 gem "sinatra-asset-pipeline", require: "sinatra/asset_pipeline"
 gem "actionview", require: "action_view"
 gem "rake"
@@ -25,4 +25,8 @@ group :test, :development do
   gem "capybara"
   gem "rspec"
   gem "launchy"
+end
+
+group :production do
+  gem 'rails_12factor'
 end
