@@ -4,7 +4,7 @@ ruby "2.3.1"
 
 gem "bundler"
 gem "sinatra", require: ["sinatra", "sinatra/base"]
-gem "sinatra-contrib", require: ["sinatra/reloader", "sinatra/cookies"]
+gem "sinatra-contrib", require: ["sinatra/reloader"]
 gem "sinatra-asset-pipeline", require: "sinatra/asset_pipeline"
 gem "actionview", require: "action_view"
 gem "rake"

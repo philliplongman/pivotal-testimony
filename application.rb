@@ -17,7 +17,6 @@ class PivotalExporter < Sinatra::Base
     end
   end
 
-  helpers Sinatra::Cookies
   helpers do
     include ActionView::Helpers::UrlHelper
     include ActionView::Helpers::FormTagHelper
@@ -25,7 +24,7 @@ class PivotalExporter < Sinatra::Base
   end
 
   def client
-    @@client ||= 
+    @@client ||=
       TrackerApi::Client.new(token: session[:api]) if session[:api].present?
   end
 
