@@ -15,18 +15,24 @@ html[lang="en"]
       div
         .top-bar-right
           ul.menu
-            li== text_field_tag :api_token, @api_token, placeholder: "Pivotal Tracker API"
-            li== button_tag "Set API", class: "button"
-      
+            li
+              form.api-form[action="/set-api" method="post"]
+                .input-group
+                  == text_field_tag :api_token, @api_token, 
+                    placeholder: "Pivotal Tracker API", class: "input-group-field"
+                  .input-group-button== button_tag "Set API", class: "button"
+    
     .row
-      form.story-form[action="/" method="post"]
-        .medium-6.columns
-          == label_tag :project_id, "Project"
-          == select_tag :project_id, options_from_collection_for_select(@projects, :id, :name)
-        .medium-6.columns
-          == label_tag :story_id, "Story ID"
-          == text_field_tag :story_id
-          == submit_tag "Testify!", class: "button"
+      - if @projects
+        form.story-form[action="/" method="post"]
+          .medium-6.columns
+            == label_tag :project_id, "Project"
+            == select_tag :project_id, options_from_collection_for_select(@projects, :id, :name)
+          .medium-6.columns
+            == label_tag :story_id, "Story ID"
+            .input-group
+              == text_field_tag :story_id, nil, class: "input-group-field"
+              .input-group-button== submit_tag "Testify!", class: "button"
     
       .story.small-12.columns
         == yield

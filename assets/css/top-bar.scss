@@ -1,15 +1,15 @@
 .top-bar {
 
-  .menu input {
+  strong {
+    font-size: 26px;
+  }
+
+  input {
     border: 1px solid #b8b1b1;
   }
 
-  .button {
-    height: 39px;
-  }
-
-  strong {
-    font-size: 26px;
+  .input-group {
+    margin-bottom: 0;
   }
 
 }

@@ -1,7 +1,8 @@
 ## To do
-- Put something up top.
+- Add tests.
+- Update gems & find the one that's breaking the asset pipeline.
+- Store last selected project in cookie.
 - Sub-lists in tasks.
 - Error handling for incorrect story IDs.
-- Find a way to "log in" with your API token which gets persisted, so anyone can use the app.
-- Store last selected project in cookie.
+- Error handling for bad api token
 - Wrap export logic in a gem, so this an be done on the command line.
