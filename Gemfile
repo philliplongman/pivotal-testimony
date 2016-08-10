@@ -12,6 +12,7 @@ gem "puma"
 gem "slim"
 gem "uglifier"
 gem "tracker_api"
+gem "encrypted_cookie"
 
 group :development do
   gem "better_errors"

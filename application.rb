@@ -1,7 +1,10 @@
 class PivotalExporter < Sinatra::Base
-  register Sinatra::Reloader if development?
+
+  use Rack::Session::EncryptedCookie, secret: ENV['SECRET_KEY']
 
   configure :development do
+    register Sinatra::Reloader
+
     use BetterErrors::Middleware
     BetterErrors.application_root = __dir__
   end
@@ -10,9 +13,7 @@ class PivotalExporter < Sinatra::Base
     register Sinatra::AssetPipeline
 
     if defined?(RailsAssets)
-      RailsAssets.load_paths.each do |path|
-        settings.sprockets.append_path(path)
-      end
+      RailsAssets.load_paths.each { |path| settings.sprockets.append_path(path) }
     end
   end
 
@@ -24,7 +25,8 @@ class PivotalExporter < Sinatra::Base
   end
 
   def client
-    @@client ||= TrackerApi::Client.new(token: cookies[:api]) if cookies[:api].present?
+    @@client ||= 
+      TrackerApi::Client.new(token: session[:api]) if session[:api].present?
   end
 
   def projects
@@ -33,7 +35,7 @@ class PivotalExporter < Sinatra::Base
 
   get "/" do
     @projects = projects if client
-    @api_token = cookies[:api]
+    @api_token = session[:api]
     slim :index
   end
 
@@ -49,10 +51,10 @@ class PivotalExporter < Sinatra::Base
 
   post "/set-api" do
     if params[:api_token].present?
-      cookies[:api] = params[:api_token]
-      @@client = TrackerApi::Client.new(token: cookies[:api])
+      session[:api] = params[:api_token]
+      @@client = TrackerApi::Client.new(token: session[:api])
     else
-      cookies[:api] = nil
+      session[:api] = nil
     end
     redirect "/"
   end
@@ -61,7 +63,7 @@ class PivotalExporter < Sinatra::Base
     story = client.project(params[:project_id]).story(params[:story_id])
 
     @projects = projects
-    @api_token = cookies[:api]
+    @api_token = session[:api]
     @feature = Feature.new(story)
     slim :show
   end
