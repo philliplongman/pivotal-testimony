@@ -1,3 +1,5 @@
+# RSpec
+
 begin
   require 'rspec/core/rake_task'
 
@@ -10,7 +12,12 @@ end
 task default: ['spec']
 
 
+# Asset Pipeline
 
+require 'bundler/setup'
+Bundler.require :default, :development
+require_relative "lib/feature"
+require_relative "lib/line_wrapper"
 require_relative 'application'
 
 require 'sinatra/asset_pipeline/task'
