@@ -2,7 +2,7 @@ require 'pry'
 require 'rspec'
 require 'capybara/rspec'
 
-require_relative '../application.rb'
+require_relative 'app'
 
 set :environment, :test
 

@@ -10,7 +10,6 @@ class PivotalTestimony < Sinatra::Base
   end
 
   configure do
-    set :assets_precompile, %w(application.js application.css *.png *.jpg *.svg *.eot *.ttf *.woff)
     register Sinatra::AssetPipeline
 
     if defined?(RailsAssets)

@@ -18,7 +18,7 @@ require 'bundler/setup'
 Bundler.require :default, :development
 require_relative "lib/feature"
 require_relative "lib/line_wrapper"
-require_relative 'application'
+require_relative 'app'
 
 require 'sinatra/asset_pipeline/task'
 Sinatra::AssetPipeline::Task.define!(PivotalTestimony)

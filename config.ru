@@ -7,7 +7,6 @@ Dotenv.load if development?
 
 require_relative "lib/feature"
 require_relative "lib/line_wrapper"
-
-require './application'
+require_relative "app"
 
 run PivotalTestimony
