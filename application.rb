@@ -1,4 +1,4 @@
-class PivotalExporter < Sinatra::Base
+class PivotalTestimony < Sinatra::Base
 
   use Rack::Session::EncryptedCookie, secret: ENV['SECRET_KEY']
 

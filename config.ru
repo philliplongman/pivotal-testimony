@@ -10,4 +10,4 @@ require_relative "lib/line_wrapper"
 
 require './application'
 
-run PivotalExporter
+run PivotalTestimony

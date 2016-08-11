@@ -14,4 +14,4 @@ task default: ['spec']
 require_relative 'application'
 
 require 'sinatra/asset_pipeline/task'
-Sinatra::AssetPipeline::Task.define!(Application)
+Sinatra::AssetPipeline::Task.define!(PivotalTestimony)
