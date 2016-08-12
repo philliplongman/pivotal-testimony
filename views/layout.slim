@@ -4,7 +4,7 @@ html[lang="en"]
     title Pivotal Testimony
     meta[charset="utf-8"]
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    == stylesheet_tag 'app'
+    == stylesheet_tag "app"
     
   body
     .top-bar.stacked-for-small
@@ -18,7 +18,7 @@ html[lang="en"]
             li
               form.api-form[action="/set-api" method="post"]
                 .input-group
-                  == text_field_tag :api_token, @api_token, 
+                  == text_field_tag :api_token, api_token, 
                     placeholder: "Pivotal Tracker API", class: "input-group-field"
                   .input-group-button== button_tag "Set API", class: "button"
     
@@ -37,4 +37,4 @@ html[lang="en"]
       .story.small-12.columns
         == yield
 
-    == javascript_tag 'app'
+    == javascript_tag "app"
