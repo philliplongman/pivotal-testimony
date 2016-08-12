@@ -1,8 +1,8 @@
-require 'pry'
-require 'rspec'
-require 'capybara/rspec'
+require "pry"
+require "rspec"
+require "capybara/rspec"
 
-require_relative 'app'
+require_relative "app"
 
 set :environment, :test
 
