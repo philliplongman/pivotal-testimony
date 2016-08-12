@@ -10,7 +10,7 @@ module PivotalTestimony
         @tasks = story.tasks.map(&:description)
       end
 
-      def export
+      def comment_block
         export = []
         export << LineWrapper.wrap_scenario(scenario)
         export << "Acceptance Criteria:"
