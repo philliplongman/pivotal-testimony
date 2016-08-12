@@ -2,7 +2,6 @@ module PivotalTestimony
   module Routes
     class Sessions < Base
 
-
       get "/" do
         @projects = client.projects if client
         slim :index
