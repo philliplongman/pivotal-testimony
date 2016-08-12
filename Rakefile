@@ -17,7 +17,7 @@ task default: ["spec"]
 require "bundler/setup"
 Bundler.require :default, :development
 Dir.glob("./lib/*", &method(:require))
-Dir.glob("./Routes/*", &method(:require))
+Dir.glob("./routes/*", &method(:require))
 require_relative "app"
 
 require "sinatra/asset_pipeline/task"
