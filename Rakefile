@@ -21,4 +21,4 @@ Dir.glob("./Routes/*", &method(:require))
 require_relative "app"
 
 require "sinatra/asset_pipeline/task"
-Sinatra::AssetPipeline::Task.define!(PivotalTestimony::App)
+Sinatra::AssetPipeline::Task.define!(PivotalTestimony::Routes::Base)
