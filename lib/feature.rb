@@ -5,7 +5,8 @@ module PivotalTestimony
 
       def initialize(story)
         @name = story.name
-        @labels = story.labels.map(&:name)
+        labels = story.labels || []
+        @labels = labels.map(&:name)
         @description = story.description
         @tasks = story.tasks.map(&:description)
       end
@@ -21,11 +22,17 @@ module PivotalTestimony
       private
 
       def scenario
-        @scenario ||= description.split(notes_section_header).first.strip
+        @scenario ||= begin
+          return "" if description.nil?
+          description.split(notes_section_header).first.strip
+        end
       end
 
       def notes
-        @notes ||= description.split(notes_section_header).last.strip
+        @notes ||= begin
+          return "" if description.nil?
+          description.split(notes_section_header).laststrip
+        end
       end
 
       def notes_section_header
