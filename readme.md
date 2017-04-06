@@ -22,3 +22,7 @@ feature "Phillip cuts down on his workload -" do
   # [ ] Each line should be wrapped and indented to no more than 76 characters,
   #     so it will fit properly in the test when indented and commented out.
 ```
+
+### Try it out
+
+You can try it youself on [Heroku](http://pivotaltestimony.herokuapp.com). Choose a story that has a description, labels, and tasks.
